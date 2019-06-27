@@ -32,8 +32,17 @@ class TestBaseModel(unittest.TestCase):
         """Test that update is different than create after update"""
         my_model = BaseModel()
         self.assertEqual(my_model.created_at.second, my_model.updated_at.second)
+        s1 = my_model.created_at.second
+        sleep(1)
         my_model.name = "Holberton"
-        self.assertNotEqual(my_model.created_at, my_model.updated_at)
+        s2 = my_model.updated_at.second
+        self.assertEqual(s1, s2)
+
+    # ---------Test __init__Method ---------------------------------------------
+#################NEED TO DO TESTS FOR THIS######################################
+
+    def test_initCorrect(self):
+        """Test that init is working correctly"""
 
     # ---------Test Save Method ---------------------------------------------
 
@@ -46,8 +55,7 @@ class TestBaseModel(unittest.TestCase):
         s2 = my_model.updated_at.second
         if (s2 == 0):
             s2 = 60
-        self.assertEqual(my_model.created_at.second,
-                         my_model.updated_at.second - 1)
+        self.assertEqual(s1, s2 - 1)
 
     def test_saveArgs(self):
         """Tests passing args to save"""
@@ -76,16 +84,25 @@ class TestBaseModel(unittest.TestCase):
                 flag = False
         self.assertTrue(flag)
 
-    def test_toDictCreatedStr(self):
-        """Tests that created_at  was added"""
+    def test_toDictCreatedFormat(self):
+        """Tests that created_at is in correct format"""
         my_model = BaseModel()
+        correct = datetime.isoformat(my_model.created_at)
         dic = my_model.to_dict()
         flag = True
-        for key, value in dic.items():
-            if "__class__" not in dic:
+        if correct not in dic.values():
                 flag = False
         self.assertTrue(flag)
 
+    def test_toDictUpdatedFormat(self):
+        """Tests that updated_at is in correct format"""
+        my_model = BaseModel()
+        correct = datetime.isoformat(my_model.updated_at)
+        dic = my_model.to_dict()
+        flag = True
+        if correct not in dic.values():
+                flag = False
+        self.assertTrue(flag)
 
     def test_toDictArgs(self):
         """Tests passing args to to_dict"""
