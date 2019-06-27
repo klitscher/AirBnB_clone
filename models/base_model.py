@@ -1,8 +1,11 @@
 #!/usr/bin/python3
 """Defines the BaseModel class."""
+
+
 import models
 from uuid import uuid4
 from datetime import datetime
+
 
 class BaseModel:
     """BaseModel for all BnB project"""
@@ -21,14 +24,15 @@ class BaseModel:
         if len(kwargs) != 0:
             for value1, value2 in kwargs.items():
                 if value1 is "created_at" or value1 is "updated_at":
-                    self.__dict__[value1] = datetime.strptime(value2, timeDisplay)
+                    self.__dict__[value1] = datetime.strptime(value2,
+                                                              timeDisplay)
                 else:
                     self.__dict__[value1] = value2
-        
+
     def save(self):
         """Saves updated_at with the current datetime"""
         self.update_at = datetime.now()
-    
+
     def to_dict(self):
         """Updates dictionary and returns BaseModel instance.
 
