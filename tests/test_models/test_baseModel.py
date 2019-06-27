@@ -31,8 +31,7 @@ class TestBaseModel(unittest.TestCase):
     def test_updateDif(self):
         """Test that update is different than create after update"""
         my_model = BaseModel()
-        t1 = my_model.created_at - my_model.updated_at
-        self.assertTrue((t1.total_seconds() * -1000000) < 100)
+        self.assertEqual(my_model.created_at.second, my_model.updated_at.second)
         my_model.name = "Holberton"
         self.assertNotEqual(my_model.created_at, my_model.updated_at)
 
@@ -41,10 +40,57 @@ class TestBaseModel(unittest.TestCase):
     def test_saveCorrect(self):
         """Tests that save works correctly"""
         my_model = BaseModel()
+        s1 = my_model.created_at.second
         sleep(1)
         my_model.save()
-        self.assertEqual(my_model.created_at.second, my_model.updated_at.second - 1)
+        s2 = my_model.updated_at.second
+        if (s2 == 0):
+            s2 = 60
+        self.assertEqual(my_model.created_at.second,
+                         my_model.updated_at.second - 1)
 
+    def test_saveArgs(self):
+        """Tests passing args to save"""
+        my_model = BaseModel()
+        self.assertRaises(TypeError, my_model.save, "Test")
+
+    # ---------Test to_dict Method ---------------------------------------------
+
+    def test_toDictCorrect(self):
+        """Tests that it works"""
+        my_model = BaseModel()
+        dic = my_model.to_dict()
+        flag = True
+        for key, value in my_model.__dict__.items():
+            if key not in dic:
+                flag = False
+        self.assertTrue(flag)
+
+    def test_toDictClass(self):
+        """Tests that __class__ was added"""
+        my_model = BaseModel()
+        dic = my_model.to_dict()
+        flag = True
+        for key, value in dic.items():
+            if "__class__" not in dic:
+                flag = False
+        self.assertTrue(flag)
+
+    def test_toDictCreatedStr(self):
+        """Tests that created_at  was added"""
+        my_model = BaseModel()
+        dic = my_model.to_dict()
+        flag = True
+        for key, value in dic.items():
+            if "__class__" not in dic:
+                flag = False
+        self.assertTrue(flag)
+
+
+    def test_toDictArgs(self):
+        """Tests passing args to to_dict"""
+        my_model = BaseModel()
+        self.assertRaises(TypeError, my_model.to_dict, "Test")
 
     # ---------Test __str__ Method ---------------------------------------------
 
@@ -56,8 +102,3 @@ class TestBaseModel(unittest.TestCase):
         with redirect_stdout(f):
             print(my_model)
         self.assertEqual(f.getvalue(), s)
-
-
-
-
-    # ---------Test Save Method ---------------------------------------------

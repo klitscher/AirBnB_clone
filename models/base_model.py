@@ -40,8 +40,8 @@ class BaseModel:
         value key/pair included
         """
         UpdateDictionary = self.__dict__.copy()
-        UpdateDictionary["updated_at"] = str(self.updated_at)
-        UpdateDictionary["created_at"] = str(self.created_at)
+        UpdateDictionary["updated_at"] = datetime.isoformat((self.updated_at))
+        UpdateDictionary["created_at"] = datetime.isoformat((self.created_at))
         UpdateDictionary["__class__"] = self.__class__.__name__
         return UpdateDictionary
 
