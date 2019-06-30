@@ -18,17 +18,20 @@ class BaseModel:
             **Kwargs: Key/values of pairs of attributes.
         """
         timeDisplay = "%Y-%m-%dT%H:%M:%S.%f"
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
-        storage.new(self)
-        if len(kwargs) != 0:
-            for value1, value2 in kwargs.items():
-                if value1 is "created_at" or value1 is "updated_at":
-                    self.__dict__[value1] = datetime.strptime(value2,
+        if len(kwargs) == 0:
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+            storage.new(self)
+        else:
+            kwargs.pop('__class__')
+            for key, value in kwargs.items():
+                if key is "created_at" or key is "updated_at":
+                    self.__dict__[key] = datetime.strptime(value,
                                                               timeDisplay)
                 else:
-                    self.__dict__[value1] = value2
+                    setattr(self, key, value)
+                    #self.__dict__[value1] = value2
 
     def save(self):
         """Saves updated_at with the current datetime"""
@@ -42,7 +45,12 @@ class BaseModel:
         returns class name of object
         value key/pair included
         """
+        timeDisplay = "%Y-%m-%dT%H:%M:%S.%f"
         UpdateDictionary = self.__dict__.copy()
+        if (type(self.updated_at)) is str:
+            self.updated_at = datetime.strptime(self.updated_at, timeDisplay)
+        if (type(self.created_at)) is str:
+            self.created_at = datetime.strptime(self.created_at, timeDisplay)
         UpdateDictionary["updated_at"] = datetime.isoformat((self.updated_at))
         UpdateDictionary["created_at"] = datetime.isoformat((self.created_at))
         UpdateDictionary["__class__"] = self.__class__.__name__

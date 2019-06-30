@@ -29,17 +29,25 @@ class FileStorage:
 
     def save(self):
         """Serializes __objects to the JSON file"""
+        from models.base_model import BaseModel
+        dic = type(self).__objects.copy()
         with open(type(self).__file_path, 'w+') as f:
+            for key, value in dic.items():
+                if isinstance(value, BaseModel):
+                    value2 = value.to_dict()
+                    type(self).__objects[key] = value2
             json.dump(type(self).__objects, f)
 
     def reload(self):
         """Deserializes the Json file to __objects if the file exists"""
         dic = {}
+        dic2 = {}
         from models.base_model import BaseModel
         if isfile(type(self).__file_path):
             with open(type(self).__file_path, 'r') as f:
                 dic = json.load(f)
                 for key, value in dic.items():
-                    print(value)
-#                FileStorage.__objects = json.load(f)
-
+                    dic2 = value
+                    instance = BaseModel(**dic2)
+                    dic[key] = instance
+                type(self).__objects = dic
