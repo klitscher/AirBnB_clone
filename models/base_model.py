@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """Defines the BaseModel class."""
 
-
-import models
+from os.path import isfile
+from models import storage
 from uuid import uuid4
 from datetime import datetime
 
@@ -21,6 +21,7 @@ class BaseModel:
         self.id = str(uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
+        storage.new(self)
         if len(kwargs) != 0:
             for value1, value2 in kwargs.items():
                 if value1 is "created_at" or value1 is "updated_at":
@@ -32,6 +33,8 @@ class BaseModel:
     def save(self):
         """Saves updated_at with the current datetime"""
         self.updated_at = datetime.now()
+        storage.new(self)
+        storage.save()
 
     def to_dict(self):
         """Updates dictionary and returns BaseModel instance.
