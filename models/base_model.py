@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines the BaseModel class."""
 
+
 from os.path import isfile
 from models import storage
 from uuid import uuid4
@@ -28,10 +29,9 @@ class BaseModel:
             for key, value in kwargs.items():
                 if key is "created_at" or key is "updated_at":
                     self.__dict__[key] = datetime.strptime(value,
-                                                              timeDisplay)
+                                                           timeDisplay)
                 else:
                     setattr(self, key, value)
-                    #self.__dict__[value1] = value2
 
     def save(self):
         """Saves updated_at with the current datetime"""

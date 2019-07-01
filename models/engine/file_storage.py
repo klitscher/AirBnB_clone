@@ -4,7 +4,6 @@
 
 import json
 from os.path import isfile
-from collections import namedtuple
 
 
 class FileStorage:
@@ -31,6 +30,11 @@ class FileStorage:
         """Serializes __objects to the JSON file"""
         from models.base_model import BaseModel
         from models.user import User
+        from models.state import State
+        from models.city import City
+        from models.amenity import Amenity
+        from models.place import Place
+        from models.review import Review
         dic = type(self).__objects.copy()
         with open(type(self).__file_path, 'w+') as f:
             for key, value in dic.items():
@@ -40,12 +44,32 @@ class FileStorage:
                 if isinstance(value, User):
                     value2 = value.to_dict()
                     type(self).__objects[key] = value2
+                if isinstance(value, State):
+                    value2 = value.to_dict()
+                    type(self).__objects[key] = value2
+                if isinstance(value, City):
+                    value2 = value.to_dict()
+                    type(self).__objects[key] = value2
+                if isinstance(value, Amenity):
+                    value2 = value.to_dict()
+                    type(self).__objects[key] = value2
+                if isinstance(value, Place):
+                    value2 = value.to_dict()
+                    type(self).__objects[key] = value2
+                if isinstance(value, Review):
+                    value2 = value.to_dict()
+                    type(self).__objects[key] = value2
             json.dump(type(self).__objects, f)
 
     def reload(self):
         """Deserializes the Json file to __objects if the file exists"""
         from models.base_model import BaseModel
         from models.user import User
+        from models.state import State
+        from models.city import City
+        from models.amenity import Amenity
+        from models.place import Place
+        from models.review import Review
         dic = {}
         dic2 = {}
         if isfile(type(self).__file_path):
@@ -53,9 +77,19 @@ class FileStorage:
                 dic = json.load(f)
                 for key, value in dic.items():
                     dic2 = value
-                    if dic2['__class__'] == 'User':
-                        instance = User(**dic2)
                     if dic2['__class__'] == 'BaseModel':
                         instance = BaseModel(**dic2)
+                    if dic2['__class__'] == 'User':
+                        instance = User(**dic2)
+                    if dic2['__class__'] == 'State':
+                        instance = State(**dic2)
+                    if dic2['__class__'] == 'City':
+                        instance = City(**dic2)
+                    if dic2['__class__'] == 'Amenity':
+                        instance = Amenity(**dic2)
+                    if dic2['__class__'] == 'Place':
+                        instance = Place(**dic2)
+                    if dic2['__class__'] == 'Review':
+                        instance = Review(**dic2)
                     dic[key] = instance
                 type(self).__objects = dic

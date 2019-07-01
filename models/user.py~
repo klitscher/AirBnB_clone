@@ -1,9 +1,0 @@
-#!/usr/bin/python3
-"""Defines the User class."""
-
-
-import models
-
-
-class User(models.BaseModel):
-    """User BnB project"""
