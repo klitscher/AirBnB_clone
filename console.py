@@ -6,11 +6,11 @@ import shlex
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 from models.city import City
-from models.state import state
+from models.state import State
 from models.user import User
-from model.place import Place
+from models.place import Place
 from models.amenity import Amenity
-from modles.review import Review
+from models.review import Review
 from models.__init__ import storage
 
 
@@ -33,9 +33,11 @@ class HBNBCommand(cmd.Cmd):
 
     def default(self, args):
         """ Default catches all function names not spcifically defined"""
-        functs = {"all": self.do_all, "update": self.do_update,
-                    "show": self.do_show, "count": self.do_count,
-                    "destroy": self.do_destroy}
+        functs = {"all": self.do_all,
+                "update": self.do_update,
+                "show": self.do_show,
+                "count": self.do_count,
+                "destroy": self.do_destroy}
         args = (args.replace("(", ".").replace(")", ".")
                     .replace('"', "").replace(",", "").split("."))
 
@@ -73,7 +75,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         if len(args) == 1:
-            print ("**instance id missing **")
+            print ("** instance id missing **")
             return
         storage = FileStorage()
         storage.reload()
@@ -114,7 +116,7 @@ class HBNBCommand(cmd.Cmd):
                 object_list.append(value)
         print(len(object_list))
 
-    def do_destory(self, args):
+    def do_destroy(self, args):
         """ deletes instance base on class name and id """
         args = shlex.split(args)
         if len(args) == 0:
@@ -137,10 +139,10 @@ class HBNBCommand(cmd.Cmd):
         try:
             del object_dict[key]
         except KeyError:
-            print("** not instance founc **")
+            print("** not instance found **")
         storage.save()
 
-    def do_upate(self, args):
+    def do_update(self, args):
         """ Updates instance on name and ID passed in """
         storage = FileStorage()
         storage.reload()
