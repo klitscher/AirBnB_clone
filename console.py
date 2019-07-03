@@ -89,8 +89,8 @@ class HBNBCommand(cmd.Cmd):
         keys = args[0] + "." + args[1]
         keys = args[0] + "." + args[1]
         try:
-            val = object_dict[keys]
-            print(val)
+            Value = object_dict[keys]
+            print(Value)
         except KeyError:
             print("** no instance found **")
 
