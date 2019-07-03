@@ -194,9 +194,9 @@ class HBNBCommand(cmd.Cmd):
         for key, value in objects.items():
             if len(args) != 0:
                 if type(value) is eval(args):
-                    object_list.append(value)
+                    object_list.append(value.__str__())
             else:
-                object_list.append(value)
+                object_list.append(value.__str__())
         print(object_list)
 
 if __name__ == "__main__":
