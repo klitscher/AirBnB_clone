@@ -79,7 +79,7 @@ class HBNBCommand(cmd.Cmd):
             return
         storage = FileStorage()
         storage.reload()
-        obj_dic = storage.all()
+        object_dict = storage.all()
 
         try:
             eval(args[0])
@@ -89,7 +89,7 @@ class HBNBCommand(cmd.Cmd):
         keys = args[0] + "." + args[1]
         keys = args[0] + "." + args[1]
         try:
-            Value = obj_dic[keys]
+            Value = object_dict[keys]
             print(Value)
         except KeyError:
             print("** no instance found **")
@@ -129,7 +129,7 @@ class HBNBCommand(cmd.Cmd):
         classI = args[1]
         storage = FileStorage()
         storage.reload()
-        obj_dic = storage.all()
+        object_dict = storage.all()
         try:
             eval(classN)
         except NameError:
@@ -137,7 +137,7 @@ class HBNBCommand(cmd.Cmd):
             return
         keys = classN + "." + classI
         try:
-            del obj_dic[keys]
+            del object_dict[keys]
         except KeyError:
             print("** not instance found **")
         storage.save()
@@ -165,9 +165,9 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         keys = args[0] + "." + args[1]
-        obj_dic = storage.all()
+        object_dict = storage.all()
         try:
-            object_value = obj_dic[keys]
+            object_value = object_dict[keys]
         except KeyError:
             print("** no instance found **")
             return
