@@ -101,7 +101,7 @@ Prints the string representation of a class instance based on a given id.
 (hbnb) destroy BaseModel f8e10029-278f-4fe7-b27b-af792787f35e
 ```
 
-Deletes a class instance based on a given id. The storage file `instance.json` 
+Deletes a class instance based on a given id. The storage file `file.json` 
 is updated as well.
 
 ##### All:
