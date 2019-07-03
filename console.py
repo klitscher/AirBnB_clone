@@ -125,17 +125,17 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) == 1:
             print("** instance id missing **")
             return
-        classOne = args[0]
+        classN = args[0]
         classI = args[1]
         storage = FileStorage()
         storage.reload()
         object_dict = storage.all()
         try:
-            eval(classOne)
+            eval(classN)
         except NameError:
             print("** class doesn't exist **")
             return
-        keys = classOne + "." + classI
+        keys = classN + "." + classI
         try:
             del object_dict[keys]
         except KeyError:
