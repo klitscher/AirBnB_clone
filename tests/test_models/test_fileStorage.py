@@ -16,6 +16,8 @@ class TestFileStorage(unittest.TestCase):
 
     # ------------General Tests------------------------------------------------
 
+    # ------------Test all method-----------------------------------------------
+
     def test_Correct(self):
         """Tests correct output"""
-        
+        self.assertRaises(TypeError, storage.all, "Test")

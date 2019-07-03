@@ -34,10 +34,10 @@ class HBNBCommand(cmd.Cmd):
     def default(self, args):
         """ Default catches all function names not spcifically defined"""
         functs = {"all": self.do_all,
-                "update": self.do_update,
-                "show": self.do_show,
-                "count": self.do_count,
-                "destroy": self.do_destroy}
+                  "update": self.do_update,
+                  "show": self.do_show,
+                  "count": self.do_count,
+                  "destroy": self.do_destroy}
         args = (args.replace("(", ".").replace(")", ".")
                     .replace('"', "").replace(",", "").split("."))
 
@@ -75,12 +75,12 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         if len(args) == 1:
-            print ("** instance id missing **")
+            print("** instance id missing **")
             return
         storage = FileStorage()
         storage.reload()
         object_dict = storage.all()
-        
+
         try:
             eval(args[0])
         except NameError:
