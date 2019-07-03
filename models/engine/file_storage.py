@@ -21,7 +21,11 @@ class FileStorage:
         return type(self).__objects
 
     def new(self, obj):
-        """Sets in __object the obj with key <obj class name>.id"""
+        """Sets in __object the obj with key <obj class name>.id
+
+        Args:
+            obj - instance that is passsed in
+        """
         key = '{}.{}'.format(obj.__class__.__name__, obj.id)
         value = obj.to_dict()
         type(self).__objects[key] = value
