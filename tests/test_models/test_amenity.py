@@ -2,14 +2,15 @@
 """Module to test Amenity class"""
 
 
-from datetime import datetime, timedelta
-import unittest
-import io
 from models.amenity import Amenity
-from contextlib import redirect_stdout
-from time import sleep
+from tests.test_models.test_baseModel import TestBaseModel
 
 
-class TestAmenity(unittest.TestCase):
+class TestAmenity(TestBaseModel):
     """Tests for Amenity class"""
-    pass
+
+    def setUp(self):
+        """Set up which instance to call"""
+        self._class = Amenity()
+        self._class2 = Amenity()
+        self._name = "Amenity"

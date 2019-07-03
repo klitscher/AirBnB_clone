@@ -2,14 +2,15 @@
 """Module to test City class"""
 
 
-from datetime import datetime, timedelta
-import unittest
-import io
 from models.city import City
-from contextlib import redirect_stdout
-from time import sleep
+from tests.test_models.test_baseModel import TestBaseModel
 
 
-class TestCity(unittest.TestCase):
+class TestCity(TestBaseModel):
     """Tests for City class"""
-    pass
+
+    def setUp(self):
+        """Set up which instance to call"""
+        self._class = City()
+        self._class2 = City()
+        self._name = "City"

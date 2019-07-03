@@ -2,14 +2,15 @@
 """Module to test Place class"""
 
 
-from datetime import datetime, timedelta
-import unittest
-import io
 from models.place import Place
-from contextlib import redirect_stdout
-from time import sleep
+from tests.test_models.test_baseModel import TestBaseModel
 
 
-class TestPlace(unittest.TestCase):
-    """Tests for Place class"""
-    pass
+class TestPlace(TestBaseModel):
+    """Tests for BaseModel class"""
+
+    def setUp(self):
+        """Set up which instance to call"""
+        self._class = Place()
+        self._class2 = Place()
+        self._name = "Place"

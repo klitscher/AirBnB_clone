@@ -2,14 +2,15 @@
 """Module to test State class"""
 
 
-from datetime import datetime, timedelta
-import unittest
-import io
 from models.state import State
-from contextlib import redirect_stdout
-from time import sleep
+from tests.test_models.test_baseModel import TestBaseModel
 
 
-class TestState(unittest.TestCase):
-    """Tests for BaseModel class"""
-    pass
+class TestState(TestBaseModel):
+    """Tests for State class"""
+
+    def setUp(self):
+        """Set up which instance to call"""
+        self._class = State()
+        self._class2 = State()
+        self._name = "State"

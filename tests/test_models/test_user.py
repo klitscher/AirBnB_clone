@@ -2,13 +2,16 @@
 """Module to test User class"""
 
 
-from datetime import datetime, timedelta
-import unittest
-import io
-from models.user import User
-from contextlib import redirect_stdout
-from time import sleep
 
-class TestUser(unittest.TestCase):
+from models.user import User
+from tests.test_models.test_baseModel import TestBaseModel
+
+
+class TestUser(TestBaseModel):
     """Tests for User class"""
-    pass
+
+    def setUp(self):
+        """Set up which instance to call"""
+        self._class = User()
+        self._class2 = User()
+        self._name = "User"

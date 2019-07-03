@@ -2,14 +2,15 @@
 """Module to test Review class"""
 
 
-from datetime import datetime, timedelta
-import unittest
-import io
 from models.review import Review
-from contextlib import redirect_stdout
-from time import sleep
+from tests.test_models.test_baseModel import TestBaseModel
 
 
-class TestReview(unittest.TestCase):
-    """Tests for Review class"""
-    pass
+class TestReview(TestBaseModel):
+    """Tests for BaseModel class"""
+
+    def setUp(self):
+        """Set up which instance to call"""
+        self._class = Review()
+        self._class2 = Review()
+        self._name = "Review"
