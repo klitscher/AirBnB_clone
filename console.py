@@ -126,7 +126,7 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
             return
         classN = args[0]
-        classII = args[1]
+        classI = args[1]
         storage = FileStorage()
         storage.reload()
         object_dict = storage.all()
@@ -135,7 +135,7 @@ class HBNBCommand(cmd.Cmd):
         except NameError:
             print("** class doesn't exist **")
             return
-        keys = classN + "." + classII
+        keys = classN + "." + classI
         try:
             del object_dict[keys]
         except KeyError:
