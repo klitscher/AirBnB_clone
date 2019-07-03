@@ -101,7 +101,7 @@ Prints the string representation of a class instance based on a given id.
 (hbnb) destroy BaseModel f8e10029-278f-4fe7-b27b-af792787f35e
 ```
 
-Deletes a class instance based on a given id. The storage file `instance.json` 
+Deletes a class instance based on a given id. The storage file `file.json` 
 is updated as well.
 
 ##### All:
@@ -155,12 +155,20 @@ Updates and adds an attribute to the dictionary of a instance of a class.
 Unittests for the HolbertonBnB project are defined in the [tests](./tests) 
 folder.
 
+```
+$ python3 unittest -m discover tests
+```
 
+You can also specify a single test file to run at a time
 
+```bash
+$ python3 unittest -m tests/test_console.py
+```
 
+## Authors :book:
 
+* **Kyle Litscher** [klitscher](https://github.com/klitscher)
 
-
-
+* **Jared Ratner** [OrangeB0lt](https://github.com/OrangeB0lt)
 
 
