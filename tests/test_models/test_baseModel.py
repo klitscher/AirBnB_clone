@@ -19,7 +19,7 @@ class TestBaseModel(unittest.TestCase):
         self._class2 = BaseModel()
         self._name = "BaseModel"
 
-    # -------------Tests Public Attributes--------------------------------------
+    # -------------Tests Public Attributes-------------------------------
 
     def test_idCorrect(self):
         """Test that id is a unique string"""
@@ -37,20 +37,20 @@ class TestBaseModel(unittest.TestCase):
     def test_updateDif(self):
         """Test that update is different than create after update"""
         my_model = self._class
-        self.assertEqual(my_model.created_at.second, my_model.updated_at.second)
+        self.assertEqual(my_model.created_at.second,
+                         my_model.updated_at.second)
         s1 = my_model.created_at.second
         sleep(1)
         my_model.name = "Holberton"
         s2 = my_model.updated_at.second
         self.assertEqual(s1, s2)
 
-    # ---------Test __init__Method ---------------------------------------------
-#################NEED TO DO TESTS FOR THIS######################################
+    # ---------Test __init__Method -----------------------------
 
     def test_initCorrect(self):
         """Test that init is working correctly"""
 
-    # ---------Test Save Method ---------------------------------------------
+    # ---------Test Save Method --------------------------------
 
     def test_saveCorrect(self):
         """Tests that save works correctly"""
@@ -68,7 +68,7 @@ class TestBaseModel(unittest.TestCase):
         my_model = self._class
         self.assertRaises(TypeError, my_model.save, "Test")
 
-    # ---------Test to_dict Method ---------------------------------------------
+    # ---------Test to_dict Method ----------------------------
 
     def test_toDictCorrect(self):
         """Tests that it works"""
@@ -115,7 +115,7 @@ class TestBaseModel(unittest.TestCase):
         my_model = self._class
         self.assertRaises(TypeError, my_model.to_dict, "Test")
 
-    # ---------Test __str__ Method ---------------------------------------------
+    # ---------Test __str__ Method ---------------------------------
 
     def test_strCorrect(self):
         """Test that str works correctly"""
