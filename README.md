@@ -123,7 +123,44 @@ is updated as well.
 * Usage: `count <class>` or `<class>.count()`
 
 ```bash
+(hbnb) count BaseModel
+168
+```
+
+Counts the number of instances of the names class.
+
+##### Update:
+
+* Usage: `update <class> <id> <attribute name> "<attribute value>"` or
+  
+  `<class>.update(<id>, <attribute name>, <attribute value>)` or `<class>.update(<id>, <attribute dictionary>)`.
+
+```bash
+(hbnb) create User
+f1c8029f-022d-4948-b085-42474dea7b2a
+(hbnb) show User 2ba873fe-42f5-453c-a530-7d483cfc622b
+[User] (2ba873fe-42f5-453c-a530-7d483cfc622b) {'id': '2ba873fe-42f5-453c-a530-7d483cfc622b', 'created_at': '2019-07-03T14:05:52.106552', 'updated_at': '2019-07-03T14:05:52.106624'}
+(hbnb) update User 2ba873fe-42f5-453c-a530-7d483cfc622b pants onfire
+(hbnb) show User 2ba873fe-42f5-453c-a530-7d483cfc622b
+[User] (2ba873fe-42f5-453c-a530-7d483cfc622b) {'id': '2ba873fe-42f5-453c-a530-7d483cfc622b', 'created_at': '2019-07-03T14:05:52.106552', 'updated_at': '2019-07-03T14:07:33.600967', 'pants': 'onfire'}
 
 ```
+
+Updates and adds an attribute to the dictionary of a instance of a class.
+
+
+
+## Testing :wrench:
+
+Unittests for the HolbertonBnB project are defined in the [tests](./tests) 
+folder.
+
+
+
+
+
+
+
+
 
 
