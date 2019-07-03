@@ -45,11 +45,6 @@ class TestBaseModel(unittest.TestCase):
         s2 = my_model.updated_at.second
         self.assertEqual(s1, s2)
 
-    # ---------Test __init__Method -----------------------------
-
-    def test_initCorrect(self):
-        """Test that init is working correctly"""
-
     # ---------Test Save Method --------------------------------
 
     def test_saveCorrect(self):
