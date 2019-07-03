@@ -86,10 +86,10 @@ class HBNBCommand(cmd.Cmd):
         except NameError:
             print("** class doesn't exist **")
             return
-        key = args[0] + "." + args[1]
-        key = args[0] + "." + args[1]
+        keys = args[0] + "." + args[1]
+        keys = args[0] + "." + args[1]
         try:
-            val = object_dict[key]
+            val = object_dict[keys]
             print(val)
         except KeyError:
             print("** no instance found **")
@@ -108,7 +108,7 @@ class HBNBCommand(cmd.Cmd):
         except NameError:
             print("** class doesn't exist **")
             return
-        for key, value in objects.items():
+        for keys, value in objects.items():
             if len(args) != 0:
                 if type(value) is eval(args):
                     object_list.append(value)
@@ -135,9 +135,9 @@ class HBNBCommand(cmd.Cmd):
         except NameError:
             print("** class doesn't exist **")
             return
-        key = classN + "." + classI
+        keys = classN + "." + classI
         try:
-            del object_dict[key]
+            del object_dict[keys]
         except KeyError:
             print("** not instance found **")
         storage.save()
@@ -164,10 +164,10 @@ class HBNBCommand(cmd.Cmd):
         except NameError:
             print("** class doesn't exist **")
             return
-        key = args[0] + "." + args[1]
+        keys = args[0] + "." + args[1]
         object_dict = storage.all()
         try:
-            object_value = object_dict[key]
+            object_value = object_dict[keys]
         except KeyError:
             print("** no instance found **")
             return
@@ -191,7 +191,7 @@ class HBNBCommand(cmd.Cmd):
         except NameError:
             print("** class doesn't exist **")
             return
-        for key, value in objects.items():
+        for keys, value in objects.items():
             if len(args) != 0:
                 if type(value) is eval(args):
                     object_list.append(value.__str__())
