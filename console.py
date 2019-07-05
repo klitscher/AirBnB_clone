@@ -139,7 +139,7 @@ class HBNBCommand(cmd.Cmd):
         try:
             del object_dict[keys]
         except KeyError:
-            print("** not instance found **")
+            print("** no instance found **")
         storage.save()
 
     def do_update(self, args):
