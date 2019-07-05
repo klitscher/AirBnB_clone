@@ -3,7 +3,7 @@
 
 
 from models.place import Place
-from tests.test_models.test_baseModel import TestBaseModel
+from tests.test_models.test_base_model import TestBaseModel
 
 
 class TestPlace(TestBaseModel):

@@ -3,7 +3,7 @@
 
 
 from models.state import State
-from tests.test_models.test_baseModel import TestBaseModel
+from tests.test_models.test_base_model import TestBaseModel
 
 
 class TestState(TestBaseModel):

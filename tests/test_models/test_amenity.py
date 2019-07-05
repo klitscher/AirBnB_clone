@@ -3,7 +3,7 @@
 
 
 from models.amenity import Amenity
-from tests.test_models.test_baseModel import TestBaseModel
+from tests.test_models.test_base_model import TestBaseModel
 
 
 class TestAmenity(TestBaseModel):

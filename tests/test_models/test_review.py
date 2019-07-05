@@ -3,7 +3,7 @@
 
 
 from models.review import Review
-from tests.test_models.test_baseModel import TestBaseModel
+from tests.test_models.test_base_model import TestBaseModel
 
 
 class TestReview(TestBaseModel):
