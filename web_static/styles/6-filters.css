@@ -87,10 +87,14 @@ button:hover {
 
 .locations:hover .popover {
     display: block;
+    position: relative;
+    z-index: 100;
 }
 
 .amenities:hover .popover {
     display: block;
+    position: relative;
+    z-index: 100;
 }
 
 .popover h2 {
