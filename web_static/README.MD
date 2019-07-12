@@ -1,4 +1,6 @@
 # Placeholder Readme
 
 To do:
-Fixe footer meesing up on resize
+Fix footer meesing up on resize
+
+Resizing text 
