@@ -90,3 +90,11 @@ article {
 .number_bathrooms p {
     margin-top: 50px
 }
+
+.user {
+    margin-right: auto;
+}
+
+.ownerBold {
+    font-weight: bold;
+}
